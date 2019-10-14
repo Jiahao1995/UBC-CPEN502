@@ -2,8 +2,12 @@ package Assignment1;
 
 import Sarb.NeuralNetInterface;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.util.Scanner;
 
 public class NeuralNet implements NeuralNetInterface {
 
@@ -16,6 +20,9 @@ public class NeuralNet implements NeuralNetInterface {
 
     private final double a;
     private final double b;
+
+    private final double lower = -0.5d;
+    private final double upper = 0.5d;
 
     private final double errorThreshold = 0.05d;
     private double[] totalError = new double[numOutputs];
@@ -54,7 +61,7 @@ public class NeuralNet implements NeuralNetInterface {
 
     public void initializeWeights() {
         for (Layer currLayer = inputLayer; currLayer != outputLayer; currLayer = currLayer.getNext())
-            currLayer.setRandomWeights(-0.5d, 0.5d);
+            currLayer.setRandomWeights(lower, upper);
     }
 
     public void zeroWeights() {
@@ -62,13 +69,17 @@ public class NeuralNet implements NeuralNetInterface {
             currLayer.setZeroWeights();
     }
 
-    public void forwardPropagate(Layer inputLayer, Layer outputLayer) {
+    public void flip() {
+        for (Layer currLayer = inputLayer; currLayer != null; currLayer = currLayer.getNext())
+            currLayer.flip();
+    }
+
+    public void forwardPropagate() {
         for (Layer currLayer = inputLayer; currLayer != outputLayer; currLayer = currLayer.getNext())
             currLayer.forwardPropagate();
     }
 
-    public void backwardPropagate(Layer outputLayer, Layer inputLayer,
-                                  double momentumTerm, double learningRate) {
+    public void backwardPropagate(double momentumTerm, double learningRate) {
         for (Layer currLayer = outputLayer; currLayer != inputLayer; currLayer = currLayer.getPrev())
             currLayer.backwardPropagate(momentumTerm, learningRate);
     }
@@ -76,11 +87,9 @@ public class NeuralNet implements NeuralNetInterface {
     public double outputFor(double[] X) {
         initializeWeights();
         inputLayer.setInputs(X);
-        forwardPropagate(inputLayer, outputLayer);
+        forwardPropagate();
         return outputLayer.getOutputs()[0];
     }
-
-
 
     public double train(double[] X, double argValue) {
         return argValue - outputFor(X);
@@ -95,10 +104,10 @@ public class NeuralNet implements NeuralNetInterface {
             for (int i = 0; i < X.length; i++) {
                 inputLayer.setInputs(X[i]);
                 outputLayer.setOutputs(y[i]);
-                forwardPropagate(inputLayer, outputLayer);
+                forwardPropagate();
                 for (int j = 0; j < numOutputs; j++)
                     totalError[j] += Math.pow(y[i][j] - outputLayer.getOutputs()[j], 2);
-                backwardPropagate(outputLayer, inputLayer, momentumTerm, learningRate);
+                backwardPropagate(momentumTerm, learningRate);
             }
             totalError[0] /= 2;
             epoch++;
@@ -109,17 +118,37 @@ public class NeuralNet implements NeuralNetInterface {
 
 
     public void save(File argFile) {
-
+        try {
+            StringBuilder stringBuilder = new StringBuilder();
+            for (Layer currLayer = inputLayer; currLayer != outputLayer; currLayer = currLayer.getNext()) {
+                for (int i = 0; i < currLayer.getWeights().length; i++) {
+                    for (int j = 0; j < currLayer.getWeights()[0].length; j++)
+                        stringBuilder.append(currLayer.getWeights()[i][j] + " ");
+                    stringBuilder.append("\n");
+                }
+            }
+            Files.write(argFile.toPath(), stringBuilder.toString().getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void load(String argFileName) throws IOException {
-
+        Scanner scanner = new Scanner(new BufferedReader(new FileReader("./weights.txt")));
+        for (Layer currLayer = inputLayer; currLayer != outputLayer; currLayer = currLayer.getNext()) {
+            for (int i = 0; i < currLayer.getWeights().length; i++) {
+                String[] line = scanner.nextLine().trim().split(" ");
+                for (int j = 0; j < currLayer.getWeights()[0].length; j++)
+                    currLayer.setWeights(i, j, Double.parseDouble(line[j]));
+            }
+        }
     }
 
     public static void main(String[] args) {
         NeuralNet xor = new NeuralNet(2, 4, 0.2, 0.9, 0, 1);
-        xor.train(new double[][]{{0, 0}, {0, 1}, {1, 0}, {1, 1}},
-                new double[][]{{0}, {1}, {1}, {0}});
+        xor.train(new double[][] { {0, 0}, {0, 1}, {1, 0}, {1, 1} },
+                new double[][] { {0}, {1}, {1}, {0} });
+//        xor.train(new double[][] { {-1, -1}, {-1, 1}, {1, -1}, {1, 1} },
+//                new double[][] { {-1}, {1}, {1}, {-1} });
     }
-
 }

@@ -4,6 +4,8 @@ import java.util.Random;
 
 public class Layer {
 
+    private static boolean BINARY = true;
+
     private Layer prev;
     private Layer next;
     private final int N;
@@ -63,6 +65,12 @@ public class Layer {
 
     public Layer getNext() { return next; }
 
+    public double[][] getWeights() { return currWeights; }
+
+    public void setWeights(int i, int j, double weight) {
+        currWeights[i][j] = weight;
+    }
+
     public void setRandomWeights(double lower, double upper) {
         if (next == null)
             return;
@@ -88,7 +96,10 @@ public class Layer {
     }
 
     public double customSigmoid(double x) {
-        return (b - a) / (1 + Math.exp(-x)) + a;
+        if (BINARY)
+            return (b - a) / (1 + Math.exp(-x)) + a;
+        else
+            return sigmoid(x);
     }
 
     public void forwardPropagate() {
@@ -108,14 +119,22 @@ public class Layer {
         if (next == null) {
             for (int i = 0; i < N; i++) {
                 deltas[i] = 0.0d;
-                double derivative = values[i] * (1 - values[i]);
                 double error = requiredOutputs[i] - values[i];
+                double derivative;
+                if (BINARY)
+                    derivative = values[i] * (1 - values[i]);
+                else
+                    derivative = (values[i] + 1) * 0.5 * (1 - values[i]);
                 deltas[i] = derivative * error;
             }
         } else {
             for (int i = 0; i < N; i++) {
                 deltas[i] = 0.0d;
-                double derivative = values[i] * (1 - values[i]);
+                double derivative;
+                if (BINARY)
+                    derivative = values[i] * (1 - values[i]);
+                else
+                    derivative = (values[i] + 1) * 0.5 * (1 - values[i]);
                 for (int j = 0; j < next.N; j++)
                     deltas[i] += currWeights[i][j] * deltas[j];
                 deltas[i] = deltas[i] * derivative;
@@ -129,6 +148,10 @@ public class Layer {
                         learningRate * deltas[j] * prev.values[i];
             }
         }
+    }
+
+    public void flip() {
+        BINARY = !BINARY;
     }
 
 }
