@@ -44,6 +44,10 @@ public class NeuralNet implements NeuralNetInterface {
         hiddenLayer = new Layer(numHidden, a, b);
         outputLayer = new Layer(numOutputs, a, b);
 
+        inputLayer.flip();
+        hiddenLayer.flip();
+        outputLayer.flip();
+
         inputLayer.connectTo(null, hiddenLayer);
         hiddenLayer.connectTo(inputLayer, outputLayer);
         outputLayer.connectTo(hiddenLayer, null);
@@ -110,10 +114,10 @@ public class NeuralNet implements NeuralNetInterface {
                 backwardPropagate(momentumTerm, learningRate);
             }
             totalError[0] /= 2;
-            System.out.println(totalError[0]);
+//            System.out.println(totalError[0]);
             epoch++;
         } while (totalError[0] > errorThreshold);
-        System.out.println(epoch);
+//        System.out.println(epoch);
         return epoch;
     }
 
@@ -147,9 +151,17 @@ public class NeuralNet implements NeuralNetInterface {
 
     public static void main(String[] args) {
         NeuralNet xor = new NeuralNet(2, 4, 0.2, 0.9, 0, 1);
-        xor.train(new double[][] { {0, 0}, {0, 1}, {1, 0}, {1, 1} },
-                new double[][] { {0}, {1}, {1}, {0} });
-//        xor.train(new double[][] { {-1, -1}, {-1, 1}, {1, -1}, {1, 1} },
-//                new double[][] { {-1}, {1}, {1}, {-1} });
+        int epoch = 0;
+
+//        for (int i = 0; i < 100; i++) {
+//            epoch += xor.train(new double[][]{{0, 0}, {0, 1}, {1, 0}, {1, 1}}, new double[][]{{0}, {1}, {1}, {0}});
+//        }
+
+        for (int i = 0; i < 100; i++) {
+            epoch += xor.train(new double[][]{{-1, -1}, {-1, 1}, {1, -1}, {1, 1}},
+                    new double[][]{{-1}, {1}, {1}, {-1}});
+        }
+
+        System.out.println(epoch / 100);
     }
 }
