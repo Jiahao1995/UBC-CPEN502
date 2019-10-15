@@ -31,8 +31,8 @@ public class Layer {
         prev = prevLayer;
         next = nextLayer;
         if (next != null) {
-            currWeights = new double[N + 1][next.N + 1];
-            prevWeights = new double[N + 1][next.N + 1];
+            currWeights = new double[N + 1][next.N];
+            prevWeights = new double[N + 1][next.N];
             requiredOutputs = null;
         } else {
             requiredOutputs = new double[N];
@@ -80,6 +80,7 @@ public class Layer {
                 currWeights[i][j] = random.nextDouble() * (upper - lower) + lower;
             }
         }
+        prevWeights = currWeights.clone();
     }
 
     public void setZeroWeights() {
@@ -89,6 +90,7 @@ public class Layer {
             for (int i = 0; i < N + 1; i++)
                 currWeights[i][j] = 0.0d;
         }
+        prevWeights = currWeights.clone();
     }
 
     public double sigmoid(double x) {
@@ -136,7 +138,7 @@ public class Layer {
                 else
                     derivative = (values[i] + 1) * 0.5 * (1 - values[i]);
                 for (int j = 0; j < next.N; j++)
-                    deltas[i] += currWeights[i][j] * deltas[j];
+                    deltas[i] += currWeights[i][j] * next.deltas[j];
                 deltas[i] = deltas[i] * derivative;
             }
         }
@@ -144,8 +146,7 @@ public class Layer {
             for (int i = 0; i < prev.N + 1; i++) {
                 double deltaWeight = prev.currWeights[i][j] - prev.prevWeights[i][j];
                 prev.prevWeights[i][j] = prev.currWeights[i][j];
-                prev.currWeights[i][j] += momentumTerm * deltaWeight +
-                        learningRate * deltas[j] * prev.values[i];
+                prev.currWeights[i][j] += momentumTerm * deltaWeight + learningRate * deltas[j] * prev.values[i];
             }
         }
     }

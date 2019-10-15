@@ -110,6 +110,7 @@ public class NeuralNet implements NeuralNetInterface {
                 backwardPropagate(momentumTerm, learningRate);
             }
             totalError[0] /= 2;
+            System.out.println(totalError[0]);
             epoch++;
         } while (totalError[0] > errorThreshold);
         System.out.println(epoch);

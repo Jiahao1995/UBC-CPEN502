@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74b924ff-3b9c-4f0a-90d3-b74c13ad28b2" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UBC-CPEN502/Assignment1/Layer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UBC-CPEN502/Assignment1/Layer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Assignment1/Layer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assignment1/Layer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Assignment1/NeuralNet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assignment1/NeuralNet.java" afterDir="false" />
     </list>
@@ -18,10 +20,12 @@
       <file leaf-file-name="NeuralNet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Assignment1/NeuralNet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="32" lean-forward="true" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
+            <state relative-caret-position="305">
+              <caret line="78" column="41" lean-forward="true" selection-start-line="78" selection-start-column="41" selection-end-line="78" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#2647#2648#0" expanded="true" />
+                <element signature="e#2693#2694#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -30,12 +34,15 @@
       <file leaf-file-name="Layer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Assignment1/Layer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2250">
-              <caret line="152" column="24" lean-forward="true" selection-start-line="152" selection-start-column="24" selection-end-line="152" selection-end-column="24" />
+            <state relative-caret-position="349">
+              <caret line="119" column="24" lean-forward="true" selection-start-line="119" selection-start-column="24" selection-end-line="119" selection-end-column="24" />
               <folding>
                 <element signature="e#1828#1829#0" expanded="true" />
                 <element signature="e#1866#1867#0" expanded="true" />
-                <element signature="e#4486#4487#0" expanded="true" />
+                <element signature="e#2623#2624#0" expanded="true" />
+                <element signature="e#2672#2673#0" expanded="true" />
+                <element signature="e#4833#4834#0" expanded="true" />
+                <element signature="e#4865#4866#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -43,14 +50,20 @@
       </file>
     </leaf>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>setWe</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Assignment1/Layer.java" />
+        <option value="$PROJECT_DIR$/src/Sarb/NeuralNet.java" />
         <option value="$PROJECT_DIR$/src/Assignment1/NeuralNet.java" />
+        <option value="$PROJECT_DIR$/src/Assignment1/Layer.java" />
       </list>
     </option>
   </component>
@@ -63,8 +76,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="720" />
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
     <option name="width" value="720" />
     <option name="height" value="831" />
@@ -138,7 +150,18 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.NeuralNet">
+    <configuration name="NeuralNet (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Sarb.NeuralNet" />
+      <module name="UBC-CPEN502" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Sarb.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
     <configuration name="NeuralNet" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Assignment1.NeuralNet" />
       <module name="UBC-CPEN502" />
@@ -191,9 +214,14 @@
       <properties />
       <listeners />
     </configuration>
+    <list>
+      <item itemvalue="Application.NeuralNet" />
+      <item itemvalue="Application.NeuralNet (1)" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.NeuralNet" />
+        <item itemvalue="Application.NeuralNet (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -207,15 +235,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1571009692460</updated>
-      <workItem from="1571009693861" duration="5237000" />
+      <workItem from="1571009693861" duration="17602000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5237000" />
+    <option name="totallyTimeSpent" value="17602000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="720" y="23" width="720" height="831" extended-state="0" />
+    <frame x="0" y="23" width="1440" height="830" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" />
@@ -227,12 +255,12 @@
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32893" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.17460318" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info id="Capture Tool" />
       <window_info id="Designer" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.07777778" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1388889" />
       <window_info anchor="right" id="Database" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -269,24 +297,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sarb/NeuralNet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4028">
+          <caret line="296" lean-forward="true" selection-start-line="296" selection-end-line="296" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Assignment1/NeuralNet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="32" lean-forward="true" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
+        <state relative-caret-position="305">
+          <caret line="78" column="41" lean-forward="true" selection-start-line="78" selection-start-column="41" selection-end-line="78" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2647#2648#0" expanded="true" />
+            <element signature="e#2693#2694#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Assignment1/Layer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2250">
-          <caret line="152" column="24" lean-forward="true" selection-start-line="152" selection-start-column="24" selection-end-line="152" selection-end-column="24" />
+        <state relative-caret-position="349">
+          <caret line="119" column="24" lean-forward="true" selection-start-line="119" selection-start-column="24" selection-end-line="119" selection-end-column="24" />
           <folding>
             <element signature="e#1828#1829#0" expanded="true" />
             <element signature="e#1866#1867#0" expanded="true" />
-            <element signature="e#4486#4487#0" expanded="true" />
+            <element signature="e#2623#2624#0" expanded="true" />
+            <element signature="e#2672#2673#0" expanded="true" />
+            <element signature="e#4833#4834#0" expanded="true" />
+            <element signature="e#4865#4866#0" expanded="true" />
           </folding>
         </state>
       </provider>
