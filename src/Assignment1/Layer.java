@@ -15,18 +15,23 @@ public class Layer {
     private double[][] prevWeights;
     private double[] requiredOutputs;
 
-    private final double a;
-    private final double b;
+    private final double a = 0.0d;
+    private final double b = 1.0d;
 
-    public Layer(int numOfNeurons, double argA, double argB) {
+    public Layer(int numOfNeurons) {
         N = numOfNeurons;
         values = new double[N + 1];
         values[N] = 1.d;
         deltas = new double[N];
-        a = argA;
-        b = argB;
     }
 
+    /**
+     * Each layer has two pointers pointing to its previous and next layer. Once the connection is made,
+     * the 2d-array weights[][] (if this is not the output layer) or the 1d-array requiredOutputs[] (if
+     * this is the output layer) would be initialized.
+     * @param prevLayer
+     * @param nextLayer
+     */
     public void connectTo(Layer prevLayer, Layer nextLayer) {
         prev = prevLayer;
         next = nextLayer;
@@ -61,6 +66,8 @@ public class Layer {
 
     public double[] getOutputs() { return values; }
 
+    public int size() { return N; }
+
     public Layer getPrev() { return prev; }
 
     public Layer getNext() { return next; }
@@ -71,16 +78,18 @@ public class Layer {
         currWeights[i][j] = weight;
     }
 
-    public void setRandomWeights(double lower, double upper) {
+    public void setRandomWeights() {
+        double lower = -0.5d;
+        double upper = 0.5d;
         if (next == null)
             return;
         for (int j = 0; j < next.N; j++) {
             for (int i = 0; i < N + 1; i++) {
                 Random random = new Random();
                 currWeights[i][j] = random.nextDouble() * (upper - lower) + lower;
+                prevWeights[i][j] = currWeights[i][j];
             }
         }
-        prevWeights = currWeights.clone();
     }
 
     public void setZeroWeights() {
@@ -106,7 +115,7 @@ public class Layer {
 
     public void forwardPropagate() {
         if (next == null)
-            throw new NullPointerException("You cannot ask an output layer to forward-propagate!");
+            throw new NullPointerException("Cannot perform a forward-propagation on an output layer.");
         for (int j = 0; j < next.N; j++) {
             next.values[j] = 0.0d;
             for (int i = 0; i < N + 1; i++)
@@ -117,7 +126,7 @@ public class Layer {
 
     public void backwardPropagate(double momentumTerm, double learningRate) {
         if (prev == null)
-            throw new NullPointerException("You cannot ask an input layer to backward-propagate!");
+            throw new NullPointerException("Cannot perform a backward-propagation on an input layer.");
         if (next == null) {
             for (int i = 0; i < N; i++) {
                 deltas[i] = 0.0d;
