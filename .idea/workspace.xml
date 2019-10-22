@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74b924ff-3b9c-4f0a-90d3-b74c13ad28b2" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Assignment1/FiveLayerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assignment1/OneLayerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assignment1/TwoLayerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UBC-CPEN502/Assignment1/Layer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UBC-CPEN502/Assignment1/Layer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UBC-CPEN502/Assignment1/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UBC-CPEN502/Assignment1/NeuralNet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UBC-CPEN502/Assignment1/NeuralNet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Assignment1/Layer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assignment1/Layer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Assignment1/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Assignment1/NeuralNet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assignment1/NeuralNet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Assignment1/OneLayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assignment1/OneLayerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Assignment1/TwoLayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assignment1/TwoLayerTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,21 +18,17 @@
       <file leaf-file-name="OneLayerTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Assignment1/OneLayerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="38" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
-              <folding>
-                <element signature="e#1156#1157#0" expanded="true" />
-                <element signature="e#1184#1185#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="416">
+              <caret line="34" column="40" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TwoLayerTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TwoLayerTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Assignment1/TwoLayerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            <state relative-caret-position="405">
+              <caret line="38" column="40" lean-forward="true" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -66,7 +54,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Layer.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Layer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Assignment1/Layer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
@@ -106,10 +94,10 @@
         <option value="$PROJECT_DIR$/src/Sarb/NeuralNet.java" />
         <option value="$PROJECT_DIR$/src/Assignment1/FiveLayerTest.java" />
         <option value="$PROJECT_DIR$/src/Assignment1/Main.java" />
-        <option value="$PROJECT_DIR$/src/Assignment1/TwoLayerTest.java" />
-        <option value="$PROJECT_DIR$/src/Assignment1/OneLayerTest.java" />
         <option value="$PROJECT_DIR$/src/Assignment1/NeuralNet.java" />
         <option value="$PROJECT_DIR$/src/Assignment1/Layer.java" />
+        <option value="$PROJECT_DIR$/src/Assignment1/OneLayerTest.java" />
+        <option value="$PROJECT_DIR$/src/Assignment1/TwoLayerTest.java" />
       </list>
     </option>
   </component>
@@ -196,7 +184,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.OneLayerTest">
+  <component name="RunManager" selected="Application.TwoLayerTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Assignment1.Main" />
       <module name="UBC-CPEN502" />
@@ -302,8 +290,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.OneLayerTest" />
         <item itemvalue="Application.TwoLayerTest" />
+        <item itemvalue="Application.OneLayerTest" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.NeuralNet" />
         <item itemvalue="Application.NeuralNet (1)" />
@@ -322,12 +310,12 @@
       <updated>1571009692460</updated>
       <workItem from="1571009693861" duration="21228000" />
       <workItem from="1571700071740" duration="11609000" />
-      <workItem from="1571767074671" duration="4415000" />
+      <workItem from="1571767074671" duration="4717000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37252000" />
+    <option name="totallyTimeSpent" value="37554000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="830" extended-state="6" />
@@ -342,12 +330,12 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.17460318" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.17460318" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1388889" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1388889" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936507" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -381,10 +369,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
           <caret line="29" column="44" lean-forward="true" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
-          <folding>
-            <element signature="e#1156#1157#0" expanded="true" />
-            <element signature="e#1184#1185#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -476,24 +460,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Assignment1/TwoLayerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Assignment1/OneLayerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="38" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
-          <folding>
-            <element signature="e#1156#1157#0" expanded="true" />
-            <element signature="e#1184#1185#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Assignment1/NeuralNet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="873">
@@ -516,6 +482,20 @@
             <element signature="e#4944#4945#0" expanded="true" />
             <element signature="e#4976#4977#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Assignment1/OneLayerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="34" column="40" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Assignment1/TwoLayerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="38" column="40" lean-forward="true" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
         </state>
       </provider>
     </entry>

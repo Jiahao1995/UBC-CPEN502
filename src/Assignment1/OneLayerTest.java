@@ -12,8 +12,10 @@ public class OneLayerTest {
         Layer outputLayer = new Layer(1);
         NeuralNet xor = new NeuralNet(0.2, 0, inputLayer, hiddenLayer, outputLayer);
 
-        System.out.println(xor.train(X, y));
-        xor.saveError();
+        int epoch = 0;
+        for (int i = 0; i < 100; i++)
+            epoch += xor.train(X, y);
+        System.out.println(epoch / 100);
     }
 
     public static void bipolarTest() {
@@ -27,11 +29,14 @@ public class OneLayerTest {
         NeuralNet xor = new NeuralNet(0.2, 0, inputLayer, hiddenLayer, outputLayer);
         xor.flip();
 
-        System.out.println(xor.train(X, y));
-        xor.saveError();
+        int epoch = 0;
+        for (int i = 0; i < 100; i++)
+            epoch += xor.train(X, y);
+        System.out.println(epoch / 100);
     }
 
     public static void main(String[] args) {
+        binaryTest();
         bipolarTest();
     }
 
