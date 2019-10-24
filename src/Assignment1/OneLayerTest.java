@@ -10,7 +10,7 @@ public class OneLayerTest {
         Layer inputLayer = new Layer(2);
         Layer hiddenLayer = new Layer(4);
         Layer outputLayer = new Layer(1);
-        NeuralNet xor = new NeuralNet(0.2, 0, inputLayer, hiddenLayer, outputLayer);
+        NeuralNet xor = new NeuralNet(0.9, 0.2, inputLayer, hiddenLayer, outputLayer);
 
         int epoch = 0;
         for (int i = 0; i < 100; i++)
@@ -26,7 +26,7 @@ public class OneLayerTest {
         Layer inputLayer = new Layer(2);
         Layer hiddenLayer = new Layer(4);
         Layer outputLayer = new Layer(1);
-        NeuralNet xor = new NeuralNet(0.2, 0, inputLayer, hiddenLayer, outputLayer);
+        NeuralNet xor = new NeuralNet(0.9, 0.2, inputLayer, hiddenLayer, outputLayer);
         xor.flip();
 
         int epoch = 0;

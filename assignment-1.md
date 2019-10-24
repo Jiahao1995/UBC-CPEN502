@@ -2,6 +2,8 @@
 
 file:///Users/lijiahao/Documents/UBC/CPEN_502/UBC-CPEN502/src/Assignment1/Layer.java
 
+A 'Layer' class is implemented in this part for reuse. Neural network with different layers and neurons could be constructed easily by adding or deleting 'Layer' object instead of hard coding.
+
 ```java
 package Assignment1;
 
@@ -30,6 +32,13 @@ public class Layer {
         deltas = new double[N];
     }
 
+    /**
+     * Each layer has two pointers pointing to its previous and next layer. Once the connection is made,
+     * the 2d-array weights[][] (if this is not the output layer) or the 1d-array requiredOutputs[] (if
+     * this is the output layer) would be initialized.
+     * @param prevLayer
+     * @param nextLayer
+     */
     public void connectTo(Layer prevLayer, Layer nextLayer) {
         prev = prevLayer;
         next = nextLayer;
@@ -191,6 +200,12 @@ public class NeuralNet implements NeuralNetInterface {
 
     private ArrayList<String> errorList = new ArrayList<>();
 
+    /**
+     * @param argLearningRate
+     * @param argMomentumTerm
+     * @param layers is a vararg which must contain one input layer, one output layer, and at least one hidden layer,
+     *               otherwise an IllegalArgumentException would be thrown
+     */
     public NeuralNet(double argLearningRate, double argMomentumTerm, Layer... layers) {
 
         learningRate = argLearningRate;
@@ -318,15 +333,140 @@ public class NeuralNet implements NeuralNetInterface {
             e.printStackTrace();
         }
     }
+    
 }
 ```
 
-#Result
+file:///Users/lijiahao/Documents/UBC/CPEN_502/UBC-CPEN502/src/Assignment1/OneLayerTest.java
+
+This is the test for the one-hidden layer network. Layers are initialized first and converted into the varargs of the 'NeuralNet' object.
+
+```java
+package Assignment1;
+
+public class OneLayerTest {
+
+    public static void binaryTest() {
+
+        double[][] X = { {0, 0}, {0, 1}, {1, 0}, {1, 1} };
+        double[][] y = { {0}, {1}, {1}, {0} };
+
+        Layer inputLayer = new Layer(2);
+        Layer hiddenLayer = new Layer(4);
+        Layer outputLayer = new Layer(1);
+        NeuralNet xor = new NeuralNet(0.2, 0, inputLayer, hiddenLayer, outputLayer);
+
+        int epoch = 0;
+        for (int i = 0; i < 100; i++)
+            epoch += xor.train(X, y);
+        System.out.println(epoch / 100);
+    }
+
+    public static void bipolarTest() {
+
+        double[][] X = { {-1, -1}, {-1, 1}, {1, -1}, {1, 1} };
+        double[][] y = { {-1}, {1}, {1}, {-1} };
+
+        Layer inputLayer = new Layer(2);
+        Layer hiddenLayer = new Layer(4);
+        Layer outputLayer = new Layer(1);
+        NeuralNet xor = new NeuralNet(0.2, 0, inputLayer, hiddenLayer, outputLayer);
+        xor.flip();
+
+        int epoch = 0;
+        for (int i = 0; i < 100; i++)
+            epoch += xor.train(X, y);
+        System.out.println(epoch / 100);
+    }
+
+    public static void main(String[] args) {
+        binaryTest();
+        bipolarTest();
+    }
+
+}
+```
+
+#Results
+
+Below are the results for the one-hidden layer test:
 
 ![binary00](/Users/lijiahao/Documents/UBC/CPEN_502/UBC-CPEN502/binary00.png)
 
+The average epoches for 100 tests are 4018.
+
 ![binary09](/Users/lijiahao/Documents/UBC/CPEN_502/UBC-CPEN502/binary09.png)
+
+The average epoches for 100 tests are 554.
 
 ![bipolar00](/Users/lijiahao/Documents/UBC/CPEN_502/UBC-CPEN502/bipolar00.png)
 
+The average epoches for 100 tests are 254.
+
 ![bipolar09](/Users/lijiahao/Documents/UBC/CPEN_502/UBC-CPEN502/bipolar09.png)
+
+The average epoches for 100 tests are 45.
+
+All the bipolar tests have one order of magnitude fewer epoches than their counterparts, the binary tests. The reason is that binary tests have 0 in the training set, which means sometimes update for the related weights is useless because any number times 0 equals 0.
+
+After changing the momemtum from 0 to 0.9, the epoches that are necessary for the convergence reduce by 90% for both binary and bipolar tests.
+
+
+
+For further study, a two-layer network is constructed with two hidden layers: one has 4 neurons and the other has 3 neurons:
+
+```java
+package Assignment1;
+
+public class TwoLayerTest {
+
+    public static void binaryTest() {
+
+        double[][] X = { {0, 0}, {0, 1}, {1, 0}, {1, 1} };
+        double[][] y = { {0}, {1}, {1}, {0} };
+
+        Layer inputLayer = new Layer(2);
+        Layer hiddenLayer1 = new Layer(4);
+        Layer hiddenLayer2 = new Layer(3);
+        Layer outputLayer = new Layer(1);
+        NeuralNet xor = new NeuralNet(0.2, 0.9, inputLayer, hiddenLayer1, hiddenLayer2, outputLayer);
+
+        int epoch = 0;
+        for (int i = 0; i < 100; i++) {
+            epoch += xor.train(X, y);
+        }
+        System.out.println(epoch / 100);
+    }
+
+    public static void bipolarTest() {
+
+        double[][] X = { {-1, -1}, {-1, 1}, {1, -1}, {1, 1} };
+        double[][] y = { {-1}, {1}, {1}, {-1} };
+
+        Layer inputLayer = new Layer(2);
+        Layer hiddenLayer1 = new Layer(4);
+        Layer hiddenLayer2 = new Layer(3);
+        Layer outputLayer = new Layer(1);
+        NeuralNet xor = new NeuralNet(0.2, 0.9, inputLayer, hiddenLayer1, hiddenLayer2, outputLayer);
+        xor.flip();
+
+        int epoch = 0;
+        for (int i = 0; i < 100; i++) {
+            epoch += xor.train(X, y);
+        }
+        System.out.println(epoch / 100);
+    }
+
+    public static void main(String[] args) {
+        binaryTest();
+        bipolarTest();
+    }
+
+}
+```
+
+![image-20191022205537330](/Users/lijiahao/Library/Application Support/typora-user-images/image-20191022205537330.png)
+
+![image-20191022205714854](/Users/lijiahao/Library/Application Support/typora-user-images/image-20191022205714854.png)
+
+For a two-layer network, the number of epoches needed for the binary test is more than 2500 (momemtum = 0) and 25000 (momemtum = 0.9), much larger than their counterparts in the one-layer network. As for the bipolar test, the result cannot even reach its convergence point whatever the learning rate is. The reason may be that excessive layers make the network 'overfit' at each of the training set. Given that XOR problem is non-linearly separable, the hyperplane may not be able to 'find its position' with so many weights. However, I am still working on why the binary test has a better performance than the bipolar test in this network setting.

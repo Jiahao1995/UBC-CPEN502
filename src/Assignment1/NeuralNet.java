@@ -155,5 +155,4 @@ public class NeuralNet implements NeuralNetInterface {
         }
     }
 
-
 }
